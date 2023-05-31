@@ -1,0 +1,21 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+#define MAX_ITEMS 5
+
+int main() {
+    char* items[MAX_ITEMS] = {"아이템1", "아이템2", "아이템3", "아이템4", "아이템5"};
+    int numItems = sizeof(items) / sizeof(items[0]);
+    
+   
+    srand(time(0));
+    
+   
+    int randomIndex = rand() % numItems;
+    char* selectedItem = items[randomIndex];
+    
+    printf("뽑힌 아이템: %s\n", selectedItem);
+    
+    return 0;
+}
