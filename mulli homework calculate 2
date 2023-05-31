@@ -1,0 +1,36 @@
+#include <stdio.h>
+#include <math.h>
+int main() {
+	double d, h;
+	double c1, c2, c3;
+	printf("지름:");
+	scanf("%lf", &d);
+	printf("높이:");
+	scanf("%lf", &h);
+	printf("수평각도:분모값 루트 분자 순으로 ");
+	scanf("%lf%lf%lf", &c1, &c2, &c3);
+	printf("%lf\n", pow(c1,c2)/ c3);
+	double a[5] = { 0 };
+	double b[5] = { 0 };
+	double o[5] = { 0 };
+	double i[5] = { 0 };
+	for (int q = 1; q < 6; ++q)
+	{
+		printf("통과시간1:");
+		scanf("%lf", &a[q]);
+		printf("수평거리:");
+		scanf("%lf", &b[q]);
+
+		o[q] = d / a[q];
+		i[q] = o[q]*(pow(c1,c2)/ c3);
+		printf("\n초기 속도1:%.4lf\n", o[q]);
+		printf("수평 초기 속도1:%.4lf\n\n", i[q]);
+	}
+
+	printf("통과시간1 평균:%.4lf\n", (a[1] + a[2] + a[3] + a[4] + a[5]) / 5);
+	printf("초기속도1 평균:%.4lf\n", (o[1] + o[2] + o[3] + o[4] + o[5]) / 5);
+	printf("수평 초기 속도 평균:%.4lf\n", (i[1] + i[2] + i[3] + i[4] + i[5]) / 5);
+	printf("수평거리 평균:%.4lf\n", (b[1] + b[2] + b[3] + b[4] + b[5]) / 5);
+
+return 0;
+}
