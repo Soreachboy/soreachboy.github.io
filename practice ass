@@ -1,0 +1,59 @@
+section .data
+    prompt db "첫 번째 정수를 입력하세요: ", 0
+    prompt_len equ $ - prompt
+
+section .bss
+    num1 resb 5
+    num2 resb 5
+    result resb 5
+
+section .text
+    global _start
+
+_start:
+    ; 첫 번째 정수
+    mov rax, 1
+    mov rdi, 1
+    mov rsi, prompt
+    mov rdx, prompt_len
+    syscall
+
+    mov rax, 0
+    mov rdi, 0
+    mov rsi, num1
+    mov rdx, 5
+    syscall
+
+    ; 두 번째 정수
+    mov rax, 1
+    mov rdi, 1
+    mov rsi, prompt
+    mov rdx, prompt_len
+    syscall
+
+    mov rax, 0
+    mov rdi, 0
+    mov rsi, num2
+    mov rdx, 5
+    syscall
+
+    ; 정수들을 더함
+    mov al, byte [num1]
+    sub al, '0'     
+    add al, byte [num2]
+    sub al, '0'     
+
+    ; 결과 출력
+    add al, '0'     
+    mov [result], al
+
+    mov rax, 1
+    mov rdi, 1
+    mov rsi, result
+    mov rdx, 1
+    syscall
+
+    ; 프로그램 종료
+    mov eax, 60
+    xor edi, edi
+    syscall
